@@ -1,0 +1,30 @@
+{
+    "name": "Telegraph Media",
+    "description": "Bot Telegraph Media !",
+    "stack": "container",
+    "logo": "https://telegra.ph/file/bd0fde82d09f7681afc99.jpg",
+    "repository": "https://github.com/modymesourceze/t",
+    "keywords": [
+        "python",
+        "chatbot",
+        "telegrambot"
+    ],
+    "website": "https://github.com/modymesourceze/t",
+    "env": {
+        "API_ID": {
+            "description": "ايبي ايدي",
+            "value": "25281175",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "ايبي هاش",
+            "value": "6d99cb2b60a2c519fc1f99bd19565730",
+            "required": true
+        },
+        "ELHYBA": {
+            "description": "توكن البوت",
+            "value": "",
+            "required": true
+        }
+    }
+}
