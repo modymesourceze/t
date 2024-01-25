@@ -9,8 +9,6 @@ import sqlite3
 import re
 from requests import *
 from pyrogram.types import Message
-from pyrogram.errors import FloodWait
-from pyrogram.enums import ParseMode, ChatMemberStatus  
 
 Elhyba = Client(
    "Telegraph Uploader",
@@ -30,7 +28,6 @@ async def start(client, message):
 👨🏼‍💻ما عليك سوى إرسال ملف وسائط صالح مباشرة إلى هذه الدردشة.
 ♻️انواع الملفات الصالحه هي:- 'jpeg', 'jpg', 'png', 'mp4' and 'gif'.
 
-🌐لأنشاء الروابط في المجموعات,اضفني لمجموعه خارقه اي عامه وارسل الامر <code>/tl</code> ردا علي ملف وسائط صالح.
 🖥 | [🔱 𝐒𝐎𝐔𝐑𝐂𝐄 𝐙𝐄 🔱](https://t.me/Source_Ze)
 
 ☣️ | [⧛𐇮 𝑴𝑶𝑫𝒀 𖠮🚸𖠮 آلـۘهہؚيـٰـ‌ُـُ໋۠بـ໋ۘ۠ه 𐇮](https://t.me/ELHYBA)</b>""",   
@@ -168,26 +165,7 @@ async def button(bot, update):
       elif "start" in cb_data:
         await update.message.delete()
         await start(bot, update.message)
-        
-@Elhyba.on_message(filters.command('tl'))
-async def get_link_group(client, message):
-    try:
-        text = await message.reply("🔮انتظر قليلا...")
-        async def progress(current, total):
-            await text.edit_text(f"📥 جاري التنزيل... {current * 100 / total:.1f}%")
-        try:
-            location = f"./media/group/"
-            local_path = await message.reply_to_message.download(location, progress=progress)
-            await text.edit_text("📤 جاري الرفع الي التليجراف...")
-            upload_path = upload_file(local_path) 
-            await text.edit_text(f"🌐 | رابط التليجراف:\n\n<code>https://telegra.ph{upload_path[0]}</code>")     
-            os.remove(local_path) 
-        except Exception as e:
-            await text.edit_text(f"❌ | فشل رفع الملف\n\n<i>Reason: {e}</i>")
-            os.remove(local_path) 
-            return         
-    except Exception:
-        pass                                            
+                                  
 
 print(
     """
